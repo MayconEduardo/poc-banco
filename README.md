@@ -7,55 +7,74 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## API Banco
+- API feita utilizando Laravel 7.30.4
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Serviços:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Verificar o saldo da conta;
+2. Realizar depósito na conta;
+3. Realizar saque na conta;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Como usar
 
-## Learning Laravel
+Baixar o repositório do github.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+git clone https://github.com/MayconEduardo/poc-banco-backend.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Entrar na pasta do projeto.
+```bash
+cd poc-banco-backend
+```
 
-## Laravel Sponsors
+Baixar as dependencias do projeto.
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Criar arquivo de configurações do projeto.
+```bash
+cp .env.example .env
+```
 
-### Premium Partners
+Gerar a chave da aplicação.
+```bash
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Criar banco de dados Sqlite.
+```bash
+touch database/database.sqlite
+```
 
-## Contributing
+Criar as tabelas no banco de dados.
+```bash
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Criar os registros de teste na tabela do banco de dados.
+```bash
+php artisan db:seed
+```
 
-## Code of Conduct
+Executar o projeto.
+```bash
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Endpoints
 
-## Security Vulnerabilities
+1. http://localhost:8000/api/conta/saldo/1 (Verificar o saldo da conta)
+    - Endpoint do tipo GET
+2. http://localhost:8000/api/conta/deposito/1 (Realizar depósito na conta)
+    - Endpoint do tipo POST
+    - {"valor": 10}
+3. http://localhost:8000/api/conta/saque/1 (Realizar saque na conta)
+    - Endpoint do tipo POST
+    - {"valor": 10}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Licença
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Esse repositório está licenciado pela **MIT LICENSE**.
