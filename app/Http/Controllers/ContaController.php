@@ -32,7 +32,7 @@ class ContaController extends Controller
 
         $data = array(
             'Conta' => $conta->id,
-            'CPF' => $conta->conta,
+            'CPF' => $conta->cpf,
             'Nome' => $conta->nome,
             'Saldo' => $conta->saldo
         );
@@ -81,7 +81,7 @@ class ContaController extends Controller
     public function saque(Request $request, $id)
     {
         $conta = Conta::find($id);
-        
+
         if (!$conta) {
             $response = array(
                 'data' => null,

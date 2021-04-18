@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Conta extends Model
 {
     protected $fillable = [
-        'conta', 'nome', 'saldo',
+        'cpf', 'nome', 'saldo',
     ];
 }
